@@ -4,7 +4,7 @@ A stunning bento grid developer portfolio built with **Astro 6** and **Tailwind 
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
 
-> **[Live Demo](https://grid-portfolio.vercel.app)**
+> **[Live Demo](https://grid-sigma-ruby.vercel.app)**
 
 ## Features
 

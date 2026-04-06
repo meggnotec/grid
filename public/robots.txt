@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://grid-portfolio.vercel.app/sitemap-index.xml
+Sitemap: https://grid-sigma-ruby.vercel.app/sitemap-index.xml
