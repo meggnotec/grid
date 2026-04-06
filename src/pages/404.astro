@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Lost in the Grid" description="The page you're looking for doesn't exist.">
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16 min-h-[60vh] flex items-center justify-center">
+    <div class="text-center animate-fade-in animate-delay-1">
+      <p class="text-8xl sm:text-9xl font-bold gradient-text mb-4">404</p>
+      <h1 class="text-2xl sm:text-3xl font-bold mb-4" style="color: var(--text);">Lost in the Grid</h1>
+      <p class="text-lg mb-8 max-w-md mx-auto" style="color: var(--muted);">
+        This cell is empty. The page you're looking for has been moved, deleted, or never existed.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-white transition-all hover:opacity-90"
+          style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));"
+        >
+          Back to Grid
+        </a>
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border transition-all hover:opacity-80"
+          style="color: var(--text); border-color: var(--border);"
+        >
+          View Projects
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

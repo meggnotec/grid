@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteConfig from '../data/site-config.json';
+import HeroCard from '../components/bento/HeroCard.astro';
+import StatsCard from '../components/bento/StatsCard.astro';
+import AboutCard from '../components/bento/AboutCard.astro';
+import ProjectCard from '../components/bento/ProjectCard.astro';
+import SkillsCard from '../components/bento/SkillsCard.astro';
+import SocialCard from '../components/bento/SocialCard.astro';
+import BlogCard from '../components/bento/BlogCard.astro';
+import ContactCard from '../components/bento/ContactCard.astro';
+import TestimonialCard from '../components/bento/TestimonialCard.astro';
+import NowCard from '../components/bento/NowCard.astro';
+
+const featured = siteConfig.projects.filter((p) => p.featured);
+---
+
+<BaseLayout>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Row 1: Hero (2x2) + Stats -->
+      <div class="md:col-span-2 md:row-span-2 animate-fade-in animate-delay-1">
+        <HeroCard />
+      </div>
+      <div class="animate-fade-in animate-delay-2">
+        <StatsCard value={siteConfig.stats[0].value} label={siteConfig.stats[0].label} suffix={siteConfig.stats[0].suffix} />
+      </div>
+      <div class="animate-fade-in animate-delay-3">
+        <StatsCard value={siteConfig.stats[1].value} label={siteConfig.stats[1].label} suffix={siteConfig.stats[1].suffix} />
+      </div>
+
+      <!-- Row 2 right: More stats -->
+      <div class="animate-fade-in animate-delay-3">
+        <StatsCard value={siteConfig.stats[2].value} label={siteConfig.stats[2].label} suffix={siteConfig.stats[2].suffix} />
+      </div>
+      <div class="animate-fade-in animate-delay-4">
+        <StatsCard value={siteConfig.stats[3].value} label={siteConfig.stats[3].label} suffix={siteConfig.stats[3].suffix} />
+      </div>
+
+      <!-- About -->
+      <div class="md:col-span-2 lg:col-span-4 animate-fade-in animate-delay-4">
+        <AboutCard />
+      </div>
+
+      <!-- Featured Projects -->
+      {featured.slice(0, 2).map((project, i) => (
+        <div class={`md:col-span-2 animate-fade-in animate-delay-${5 + i}`}>
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            tech={project.tech}
+            liveUrl={project.liveUrl}
+            githubUrl={project.githubUrl}
+          />
+        </div>
+      ))}
+
+      <!-- Skills + Social -->
+      <div class="animate-fade-in animate-delay-7">
+        <SkillsCard />
+      </div>
+      <div class="animate-fade-in animate-delay-7">
+        <SocialCard />
+      </div>
+
+      <!-- Blog + Contact -->
+      <div class="animate-fade-in animate-delay-8">
+        <BlogCard />
+      </div>
+      <div class="animate-fade-in animate-delay-8">
+        <ContactCard />
+      </div>
+
+      <!-- Testimonial + Now + CTA -->
+      <div class="md:col-span-2 animate-fade-in animate-delay-9">
+        <TestimonialCard />
+      </div>
+      <div class="animate-fade-in animate-delay-9">
+        <NowCard />
+      </div>
+      <div class="animate-fade-in animate-delay-10">
+        <div class="gradient-border-hover overflow-hidden p-6 flex flex-col items-center justify-center text-center h-full" style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));">
+          <p class="text-lg font-bold text-white mb-2">See All Work</p>
+          <a href="/projects" class="text-sm text-white/80 hover:text-white transition-colors underline underline-offset-2">
+            Browse Projects &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-target') || '0', 10);
+          var current = 0;
+          var step = Math.max(1, Math.floor(target / 30));
+          var timer = setInterval(function() {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = current.toLocaleString();
+          }, 30);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(function(el) {
+      observer.observe(el);
+    });
+  });
+</script>

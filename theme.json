@@ -1,0 +1,22 @@
+{
+  "name": "Grid — Bento Portfolio",
+  "slug": "grid",
+  "platform": "astro",
+  "type": "template",
+  "description": "A stunning bento grid developer portfolio built with Astro 6 & Tailwind CSS v4. Dark mode default, zero JavaScript frameworks.",
+  "features": [
+    "Bento grid homepage layout",
+    "Dark mode default with light toggle",
+    "CSS Grid with responsive breakpoints",
+    "6 MDX blog posts included",
+    "Animated stat counters",
+    "Gradient hover effects",
+    "SEO optimized with JSON-LD",
+    "Zero JS frameworks — pure Astro",
+    "Tailwind CSS v4",
+    "Self-hosted Inter Variable font"
+  ],
+  "price": "Free",
+  "demoUrl": "https://grid-portfolio.vercel.app",
+  "category": "astro-themes"
+}

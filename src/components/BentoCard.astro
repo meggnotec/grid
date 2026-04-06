@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  href?: string;
+  style?: string;
+}
+
+const { class: className = '', href, style = '' } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class:list={[
+    'gradient-border-hover block overflow-hidden p-6',
+    className,
+  ]}
+  style={`background-color: var(--card); ${style}`}
+>
+  <slot />
+</Tag>

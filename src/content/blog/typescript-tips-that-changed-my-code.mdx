@@ -1,0 +1,98 @@
+---
+title: "TypeScript Tips That Changed My Code"
+description: "Five TypeScript patterns I wish I learned sooner. From discriminated unions to const assertions, these tips leveled up my code quality."
+date: "2025-01-20"
+tags: ["TypeScript", "JavaScript", "Tips"]
+---
+
+I started using TypeScript three years ago because my team required it. I spent the first year fighting it, the second year tolerating it, and the third year wondering how I ever wrote JavaScript without it. Here are five patterns that accelerated that journey.
+
+## 1. Discriminated Unions Over Optional Fields
+
+When a type can be in one of several states, do not model it with optional fields. Use a discriminated union instead.
+
+```typescript
+// Instead of this
+type Response = {
+  status: 'loading' | 'success' | 'error';
+  data?: User;
+  error?: string;
+};
+
+// Do this
+type Response =
+  | { status: 'loading' }
+  | { status: 'success'; data: User }
+  | { status: 'error'; error: string };
+```
+
+With the union approach, TypeScript knows that when `status` is `'success'`, `data` exists. No more checking for undefined values that you know should be there.
+
+## 2. Const Assertions for Literal Types
+
+The `as const` assertion is incredibly useful for creating precise types from runtime values.
+
+```typescript
+const ROUTES = {
+  home: '/',
+  blog: '/blog',
+  about: '/about',
+} as const;
+
+type Route = typeof ROUTES[keyof typeof ROUTES];
+// Type is '/' | '/blog' | '/about'
+```
+
+Without `as const`, `Route` would just be `string`. With it, you get exact literal types that catch typos at compile time.
+
+## 3. Template Literal Types
+
+TypeScript's template literal types let you create string patterns at the type level. This is powerful for API routes, CSS classes, or event names.
+
+```typescript
+type EventName = `on${Capitalize<'click' | 'focus' | 'blur'>}`;
+// Type is 'onClick' | 'onFocus' | 'onBlur'
+```
+
+Combined with mapped types, you can generate entire type-safe APIs from a small set of base types.
+
+## 4. The Satisfies Operator
+
+The `satisfies` operator, introduced in TypeScript 4.9, lets you validate that an expression matches a type while preserving the narrower inferred type.
+
+```typescript
+type Config = Record<string, string | number>;
+
+const config = {
+  port: 3000,
+  host: 'localhost',
+  debug: 'true',
+} satisfies Config;
+
+// config.port is typed as number, not string | number
+```
+
+This gives you the best of both worlds: type validation and precise inference.
+
+## 5. Branded Types for Domain Safety
+
+Primitive types often carry semantic meaning that their type signature does not capture. A user ID and a post ID are both strings, but mixing them up is a bug.
+
+```typescript
+type UserId = string & { readonly __brand: 'UserId' };
+type PostId = string & { readonly __brand: 'PostId' };
+
+function getUser(id: UserId): User { /* ... */ }
+function getPost(id: PostId): Post { /* ... */ }
+
+const userId = 'abc' as UserId;
+getPost(userId); // Type error!
+```
+
+Branded types add zero runtime cost but prevent an entire class of bugs at compile time.
+
+## The Mindset Shift
+
+The biggest change was not learning specific syntax. It was shifting from "types slow me down" to "types catch my mistakes before users do." Every hour spent on types saves ten hours of debugging in production.
+
+TypeScript is not about making JavaScript harder. It is about making impossible states unrepresentable.

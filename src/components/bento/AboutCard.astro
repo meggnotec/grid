@@ -1,0 +1,18 @@
+---
+import siteConfig from '../../data/site-config.json';
+import BentoCard from '../BentoCard.astro';
+---
+
+<BentoCard class="col-span-1 md:col-span-2 flex flex-col sm:flex-row items-center gap-5">
+  <div class="shrink-0 w-20 h-20 rounded-full p-[2px]" style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));">
+    <div class="w-full h-full rounded-full flex items-center justify-center text-2xl font-bold" style="background-color: var(--card); color: var(--text);">
+      AR
+    </div>
+  </div>
+  <div>
+    <h2 class="text-lg font-semibold mb-2" style="color: var(--text);">About Me</h2>
+    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+      {siteConfig.bio}
+    </p>
+  </div>
+</BentoCard>

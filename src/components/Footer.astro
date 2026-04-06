@@ -1,0 +1,40 @@
+---
+import siteConfig from '../data/site-config.json';
+import Icons from './Icons.astro';
+---
+
+<footer class="border-t py-12 mt-16" style="border-color: var(--border);">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <a href="/" class="text-lg font-bold tracking-tight" style="color: var(--text);">
+          {siteConfig.name}<span class="gradient-text">.</span>
+        </a>
+        <p class="text-sm" style="color: var(--muted);">
+          <a href="https://meggnotec.com" class="hover:underline transition-colors" style="color: var(--muted);">
+            {siteConfig.footer.builtWith}
+          </a>
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg transition-colors" style="color: var(--muted);" aria-label="GitHub">
+          <Icons name="github" size={18} />
+        </a>
+        <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg transition-colors" style="color: var(--muted);" aria-label="Twitter">
+          <Icons name="twitter" size={18} />
+        </a>
+        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg transition-colors" style="color: var(--muted);" aria-label="LinkedIn">
+          <Icons name="linkedin" size={18} />
+        </a>
+        <a href={siteConfig.social.email} class="p-2 rounded-lg transition-colors" style="color: var(--muted);" aria-label="Email">
+          <Icons name="email" size={18} />
+        </a>
+      </div>
+
+      <p class="text-sm" style="color: var(--muted);">
+        &copy; {siteConfig.footer.copyright}
+      </p>
+    </div>
+  </div>
+</footer>

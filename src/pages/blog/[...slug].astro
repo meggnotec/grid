@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft && p.id !== post.id)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+function readingTime(body: string): string {
+  const words = body.split(/\s+/).length;
+  const minutes = Math.ceil(words / 200);
+  return `${minutes} min read`;
+}
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 pt-24 pb-16">
+    <div class="mb-8 animate-fade-in animate-delay-1">
+      <a href="/blog" class="text-sm font-medium gradient-text mb-4 inline-block">&larr; Back to Blog</a>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text);">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center gap-3 mb-4">
+        <time class="text-sm" style="color: var(--muted);">
+          {new Date(post.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time>
+        <span style="color: var(--border);">|</span>
+        <span class="text-sm" style="color: var(--muted);">{readingTime(post.body || '')}</span>
+      </div>
+      <div class="flex flex-wrap gap-1.5">
+        {post.data.tags.map((tag) => (
+          <span class="text-xs px-2.5 py-1 rounded-md" style="background-color: var(--card); color: var(--muted); border: 1px solid var(--border);">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="prose animate-fade-in animate-delay-2">
+      <Content />
+    </div>
+
+    {allPosts.length > 0 && (
+      <div class="mt-16 pt-8 border-t animate-fade-in animate-delay-3" style="border-color: var(--border);">
+        <h2 class="text-xl font-bold mb-6" style="color: var(--text);">More Posts</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {allPosts.map((related) => (
+            <a
+              href={`/blog/${related.id}`}
+              class="gradient-border-hover overflow-hidden p-4 flex flex-col"
+              style="background-color: var(--card);"
+            >
+              <time class="text-xs mb-2" style="color: var(--muted);">
+                {new Date(related.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="text-sm font-semibold leading-snug" style="color: var(--text);">
+                {related.data.title}
+              </h3>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </article>
+</BaseLayout>
