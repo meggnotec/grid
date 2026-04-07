@@ -1,6 +1,6 @@
 {
-  "name": "Grid — Bento Portfolio",
-  "slug": "grid",
+  "name": "Bento — Developer Portfolio",
+  "slug": "bento",
   "platform": "astro",
   "type": "template",
   "description": "A stunning bento grid developer portfolio built with Astro 6 & Tailwind CSS v4. Dark mode default, zero JavaScript frameworks.",

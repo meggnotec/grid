@@ -35,8 +35,12 @@ const categories = ['All', ...new Set(siteConfig.projects.map((p) => p.category)
           style="background-color: var(--card);"
           data-category={project.category}
         >
-          <div class="w-full h-36 rounded-lg mb-4 flex items-center justify-center dot-grid" style="background-color: var(--bg);">
-            <span class="text-4xl font-bold gradient-text">{project.title[0]}</span>
+          <div class="w-full h-36 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden" style="background-color: var(--bg);">
+            <div class="absolute inset-0 dot-grid opacity-40"></div>
+            <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));"></div>
+            <div class="relative w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));">
+              <span class="text-2xl font-bold text-white">{project.title[0]}</span>
+            </div>
           </div>
           <div class="flex items-center gap-2 mb-2">
             <span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full" style="color: var(--color-accent-violet); background-color: color-mix(in srgb, var(--color-accent-violet) 10%, transparent);">

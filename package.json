@@ -1,8 +1,8 @@
 {
-  "name": "grid",
+  "name": "bento",
   "type": "module",
   "version": "1.0.0",
-  "description": "A stunning bento grid developer portfolio built with Astro & Tailwind CSS",
+  "description": "A stunning bento grid developer portfolio built with Astro and Tailwind CSS",
   "author": "MeggnoTec Solutions",
   "license": "MIT",
   "engines": {

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../**/*.astro";
+@source "../**/*.ts";
 
 @font-face {
   font-family: "Inter Variable";

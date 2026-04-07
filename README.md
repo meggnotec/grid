@@ -1,4 +1,4 @@
-# Grid - Bento Portfolio
+# Bento — Developer Portfolio
 
 A stunning bento grid developer portfolio built with **Astro 6** and **Tailwind CSS v4**. Dark mode by default, zero JavaScript frameworks, and a beautiful CSS Grid layout that makes your work stand out.
 
@@ -37,8 +37,8 @@ A stunning bento grid developer portfolio built with **Astro 6** and **Tailwind 
 
 ```bash
 # Clone the repo
-git clone https://github.com/meggnotec/grid.git
-cd grid
+git clone https://github.com/meggnotec/bento.git
+cd bento
 
 # Install dependencies
 npm install
@@ -98,10 +98,10 @@ Edit the CSS custom properties in `src/styles/global.css`:
 ## Project Structure
 
 ```
-grid/
+bento/
 ├── public/
 │   ├── fonts/              # Self-hosted Inter Variable font
-│   ├── favicon.svg         # Grid-themed SVG favicon
+│   ├── favicon.svg         # Bento-themed SVG favicon
 │   └── robots.txt
 ├── src/
 │   ├── components/
@@ -143,7 +143,7 @@ No React. No Vue. No Svelte. Just Astro.
 
 ## Premium Themes
 
-Like Grid? Check out our premium theme collection at **[meggnotec.com](https://meggnotec.com)** - professionally built themes for Astro, Next.js, SvelteKit, Nuxt, and more. Portfolio, ecommerce, blog, SaaS, and documentation themes.
+Like Bento? Check out our premium theme collection at **[meggnotec.com](https://meggnotec.com)** - professionally built themes for Astro, Next.js, SvelteKit, Nuxt, and more. Portfolio, ecommerce, blog, SaaS, and documentation themes.
 
 ## Contributing
 
