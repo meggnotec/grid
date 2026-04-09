@@ -16,10 +16,10 @@ const featured = siteConfig.projects.filter((p) => p.featured);
 ---
 
 <BaseLayout>
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Row 1: Hero (2x2) + Stats -->
-      <div class="md:col-span-2 md:row-span-2 animate-fade-in animate-delay-1">
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+      <!-- Row 1: Hero (2x2) + Stats (2x2 grid on right) -->
+      <div class="md:col-span-2 lg:row-span-2 animate-fade-in animate-delay-1">
         <HeroCard />
       </div>
       <div class="animate-fade-in animate-delay-2">
@@ -37,14 +37,22 @@ const featured = siteConfig.projects.filter((p) => p.featured);
         <StatsCard value={siteConfig.stats[3].value} label={siteConfig.stats[3].label} suffix={siteConfig.stats[3].suffix} />
       </div>
 
-      <!-- About -->
-      <div class="md:col-span-2 lg:col-span-4 animate-fade-in animate-delay-4">
+      <!-- About (spans 2 cols, not full width) -->
+      <div class="md:col-span-2 animate-fade-in animate-delay-4">
         <AboutCard />
+      </div>
+
+      <!-- Skills + Social (in the other 2 cols) -->
+      <div class="animate-fade-in animate-delay-5">
+        <SkillsCard />
+      </div>
+      <div class="animate-fade-in animate-delay-5">
+        <SocialCard />
       </div>
 
       <!-- Featured Projects -->
       {featured.slice(0, 2).map((project, i) => (
-        <div class={`md:col-span-2 animate-fade-in animate-delay-${5 + i}`}>
+        <div class={`md:col-span-2 animate-fade-in animate-delay-${6 + i}`}>
           <ProjectCard
             title={project.title}
             description={project.description}
@@ -54,14 +62,6 @@ const featured = siteConfig.projects.filter((p) => p.featured);
           />
         </div>
       ))}
-
-      <!-- Skills + Social -->
-      <div class="animate-fade-in animate-delay-7">
-        <SkillsCard />
-      </div>
-      <div class="animate-fade-in animate-delay-7">
-        <SocialCard />
-      </div>
 
       <!-- Blog + Contact -->
       <div class="animate-fade-in animate-delay-8">

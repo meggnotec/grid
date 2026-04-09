@@ -10,7 +10,7 @@ interface Props {
 const { value, label, suffix } = Astro.props;
 ---
 
-<BentoCard class="flex flex-col items-center justify-center text-center">
+<BentoCard class="flex flex-col items-center justify-center text-center min-h-[140px]">
   <p class="text-3xl md:text-4xl font-bold mb-1" style="color: var(--text);">
     <span class="stat-number" data-target={value}>{value}</span>{suffix}
   </p>

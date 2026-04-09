@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle.astro';
 const currentPath = Astro.url.pathname;
 ---
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass" style="border-bottom: 1px solid var(--border);">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <nav class="flex items-center justify-between h-16" aria-label="Main navigation">
       <a href="/" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity" style="color: var(--text);">
@@ -90,11 +90,9 @@ const currentPath = Astro.url.pathname;
       if (scrolled !== isScrolled) {
         isScrolled = scrolled;
         if (scrolled) {
-          header.classList.add('glass');
-          header.style.borderBottom = '1px solid var(--border)';
+          header.classList.add('glass-scrolled');
         } else {
-          header.classList.remove('glass');
-          header.style.borderBottom = 'none';
+          header.classList.remove('glass-scrolled');
         }
       }
     }, { passive: true });
