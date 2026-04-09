@@ -1,116 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import siteConfig from '../data/site-config.json';
-
-const categories = ['All', ...new Set(siteConfig.projects.map((p) => p.category))];
+import ProjectCard from '../components/ProjectCard.astro';
+import projects from '../data/projects.json';
 ---
-
-<BaseLayout title="Projects" description="A collection of projects I've built — web apps, open source tools, and more.">
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16">
-    <div class="mb-12 animate-fade-in animate-delay-1">
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text);">
+<BaseLayout title="Projects — Alex Rivera" description="A collection of open-source tools, libraries, and applications I've built.">
+  <main class="max-w-6xl mx-auto px-6 pt-24 pb-16">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-3" style="color: var(--text);">
         <span class="gradient-text">Projects</span>
       </h1>
-      <p class="text-lg max-w-2xl" style="color: var(--muted);">
-        A collection of things I've built. From open-source tools to full SaaS products, each project taught me something new.
-      </p>
+      <p class="text-lg" style="color: var(--muted);">Open-source tools, libraries, and applications I've built and maintain.</p>
     </div>
 
-    <div class="flex flex-wrap gap-2 mb-8 animate-fade-in animate-delay-2">
-      {categories.map((cat, i) => (
-        <button
-          class="filter-btn px-4 py-2 text-sm font-medium rounded-lg border transition-all cursor-pointer"
-          style="border-color: var(--border); color: var(--muted);"
-          data-category={cat}
-        >
-          {cat}
-        </button>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {projects.map(project => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          tags={project.tags}
+          github={project.github}
+          live={project.live}
+          stars={project.stars}
+          color={project.color}
+        />
       ))}
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="projects-grid">
-      {siteConfig.projects.map((project, i) => (
-        <div
-          class={`project-card gradient-border-hover overflow-hidden p-6 flex flex-col animate-fade-in animate-delay-${Math.min(i + 3, 10)}`}
-          style="background-color: var(--card);"
-          data-category={project.category}
-        >
-          <div class="w-full h-36 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden" style="background-color: var(--bg);">
-            <div class="absolute inset-0 dot-grid opacity-40"></div>
-            <div class="absolute inset-0 opacity-10" style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));"></div>
-            <div class="relative w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue));">
-              <span class="text-2xl font-bold text-white">{project.title[0]}</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full" style="color: var(--color-accent-violet); background-color: color-mix(in srgb, var(--color-accent-violet) 10%, transparent);">
-              {project.category}
-            </span>
-          </div>
-          <h2 class="text-lg font-semibold mb-2" style="color: var(--text);">{project.title}</h2>
-          <p class="text-sm mb-4 flex-1" style="color: var(--muted);">{project.description}</p>
-          <div class="flex flex-wrap gap-1.5 mb-4">
-            {project.tech.map((t) => (
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--bg); color: var(--muted); border: 1px solid var(--border);">
-                {t}
-              </span>
-            ))}
-          </div>
-          <div class="flex items-center gap-3 mt-auto">
-            {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="text-xs font-medium flex items-center gap-1 transition-colors hover:opacity-80" style="color: var(--text);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live Demo
-              </a>
-            )}
-            {project.githubUrl && (
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="text-xs font-medium flex items-center gap-1 transition-colors hover:opacity-80" style="color: var(--muted);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                Source
-              </a>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
+  </main>
 </BaseLayout>
-
-<script is:inline>
-  (function() {
-    var btns = document.querySelectorAll('.filter-btn');
-    var cards = document.querySelectorAll('.project-card');
-    var activeCategory = 'All';
-
-    function setActive(btn) {
-      btns.forEach(function(b) {
-        b.style.borderColor = 'var(--border)';
-        b.style.color = 'var(--muted)';
-        b.style.background = 'transparent';
-      });
-      btn.style.background = 'linear-gradient(135deg, var(--color-accent-violet), var(--color-accent-blue))';
-      btn.style.borderColor = 'transparent';
-      btn.style.color = 'white';
-    }
-
-    setActive(btns[0]);
-
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        activeCategory = btn.getAttribute('data-category');
-        setActive(btn);
-        cards.forEach(function(card) {
-          if (activeCategory === 'All' || card.getAttribute('data-category') === activeCategory) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  })();
-</script>

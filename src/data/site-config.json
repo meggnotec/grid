@@ -1,173 +1,40 @@
 {
   "name": "Alex Rivera",
-  "title": "Full-Stack Engineer",
-  "description": "I build web applications and open-source tools that help developers ship faster. Passionate about clean code, great UX, and the modern web.",
+  "title": "Full-Stack Developer & UI Designer",
+  "bio": "I craft performant web applications with clean code and thoughtful design. Focused on React, TypeScript, and modern web technologies.",
+  "about": "With over 8 years of experience building for the web, I specialize in creating products that are both beautiful and functional. I've worked with startups and Fortune 500 companies, turning complex problems into elegant solutions. Currently focused on design systems and developer tooling.",
   "url": "https://grid-sigma-ruby.vercel.app",
   "email": "hello@alexrivera.dev",
-  "location": "San Francisco, CA",
-  "bio": "I'm a full-stack engineer with 5+ years of experience building products that people love. I specialize in TypeScript, React, and Node.js, with a focus on performance and developer experience. When I'm not coding, you'll find me contributing to open source, writing about web development, or exploring hiking trails.",
   "social": {
     "github": "https://github.com/alexrivera",
-    "twitter": "https://x.com/alexrivera",
+    "twitter": "https://twitter.com/alexrivera",
     "linkedin": "https://linkedin.com/in/alexrivera",
-    "email": "mailto:hello@alexrivera.dev"
+    "dribbble": "https://dribbble.com/alexrivera"
   },
+  "stats": [
+    { "value": "8+", "label": "Years Experience" },
+    { "value": "50+", "label": "Projects Shipped" },
+    { "value": "12K", "label": "GitHub Stars" },
+    { "value": "3M", "label": "NPM Downloads" }
+  ],
+  "skills": [
+    { "name": "React", "icon": "react" },
+    { "name": "TypeScript", "icon": "typescript" },
+    { "name": "Node.js", "icon": "nodejs" },
+    { "name": "Tailwind", "icon": "tailwind" },
+    { "name": "Next.js", "icon": "nextjs" },
+    { "name": "PostgreSQL", "icon": "postgres" },
+    { "name": "Figma", "icon": "figma" },
+    { "name": "Docker", "icon": "docker" }
+  ],
   "nav": [
     { "label": "Home", "href": "/" },
     { "label": "Projects", "href": "/projects" },
     { "label": "Blog", "href": "/blog" },
-    { "label": "About", "href": "/about" }
-  ],
-  "stats": [
-    { "value": 42, "label": "Projects", "suffix": "" },
-    { "value": 5, "label": "Years Exp.", "suffix": "+" },
-    { "value": 2400, "label": "Commits", "suffix": "+" },
-    { "value": 100, "label": "Users", "suffix": "k+" }
-  ],
-  "skills": [
-    { "name": "React", "category": "Frontend" },
-    { "name": "TypeScript", "category": "Languages" },
-    { "name": "Node.js", "category": "Backend" },
-    { "name": "Python", "category": "Languages" },
-    { "name": "Tailwind", "category": "Frontend" },
-    { "name": "PostgreSQL", "category": "Backend" },
-    { "name": "Docker", "category": "DevOps" },
-    { "name": "AWS", "category": "DevOps" }
-  ],
-  "projects": [
-    {
-      "title": "Shipfast",
-      "slug": "shipfast",
-      "description": "A developer toolkit that automates CI/CD pipeline configuration for teams. Reduced deployment time by 70% across 200+ teams.",
-      "longDescription": "Shipfast is a CLI tool and dashboard that helps engineering teams set up and manage their CI/CD pipelines. It integrates with GitHub Actions, GitLab CI, and CircleCI, providing a unified interface for pipeline management, deployment tracking, and rollback automation.",
-      "image": "",
-      "tech": ["TypeScript", "Node.js", "React", "PostgreSQL"],
-      "category": "Web",
-      "liveUrl": "https://shipfast.dev",
-      "githubUrl": "https://github.com/alexrivera/shipfast",
-      "featured": true
-    },
-    {
-      "title": "Pixelate",
-      "slug": "pixelate",
-      "description": "An open-source image optimization API that serves next-gen formats with intelligent caching. 12k+ GitHub stars.",
-      "longDescription": "Pixelate is an open-source image optimization service that automatically converts, resizes, and serves images in WebP and AVIF formats. It features an intelligent CDN caching layer and a simple REST API that developers can self-host or use as a managed service.",
-      "image": "",
-      "tech": ["Rust", "Python", "Docker", "AWS"],
-      "category": "Open Source",
-      "liveUrl": "",
-      "githubUrl": "https://github.com/alexrivera/pixelate",
-      "featured": true
-    },
-    {
-      "title": "Budgetly",
-      "slug": "budgetly",
-      "description": "A personal finance SaaS with real-time bank sync, smart categorization, and visual spending insights.",
-      "longDescription": "Budgetly connects to over 10,000 financial institutions via Plaid, automatically categorizes transactions using ML, and provides actionable insights through interactive charts and budgeting tools. Built for people who want to understand their money without spreadsheets.",
-      "image": "",
-      "tech": ["Next.js", "TypeScript", "Tailwind", "Stripe"],
-      "category": "SaaS",
-      "liveUrl": "https://budgetly.app",
-      "githubUrl": "",
-      "featured": true
-    },
-    {
-      "title": "Notehub",
-      "slug": "notehub",
-      "description": "A collaborative markdown editor with real-time sync, version history, and GitHub integration.",
-      "longDescription": "Notehub is a real-time collaborative markdown editor built for developer teams. It features CRDT-based conflict resolution, Git-like version history, and direct GitHub/GitLab integration for syncing documentation with your repository.",
-      "image": "",
-      "tech": ["React", "WebSocket", "Node.js", "MongoDB"],
-      "category": "Web",
-      "liveUrl": "https://notehub.io",
-      "githubUrl": "https://github.com/alexrivera/notehub",
-      "featured": false
-    },
-    {
-      "title": "Taskflow",
-      "slug": "taskflow",
-      "description": "A React Native task management app with natural language input and smart scheduling.",
-      "longDescription": "Taskflow uses natural language processing to parse task descriptions and automatically set due dates, priorities, and categories. It integrates with Google Calendar and Notion, and features a clean, gesture-driven mobile interface.",
-      "image": "",
-      "tech": ["React Native", "TypeScript", "Firebase", "NLP"],
-      "category": "Mobile",
-      "liveUrl": "",
-      "githubUrl": "https://github.com/alexrivera/taskflow",
-      "featured": false
-    },
-    {
-      "title": "Devmetrics",
-      "slug": "devmetrics",
-      "description": "An open-source GitHub analytics dashboard that tracks contributions, PR velocity, and team health.",
-      "longDescription": "Devmetrics provides engineering managers with clear visibility into team performance. It connects to GitHub and generates reports on PR review time, deployment frequency, code churn, and developer satisfaction metrics.",
-      "image": "",
-      "tech": ["Astro", "D3.js", "GitHub API", "Vercel"],
-      "category": "Open Source",
-      "liveUrl": "https://devmetrics.dev",
-      "githubUrl": "https://github.com/alexrivera/devmetrics",
-      "featured": false
-    }
-  ],
-  "testimonials": [
-    {
-      "quote": "Alex built our entire frontend in record time. The code quality was exceptional — well-structured, performant, and easy for our team to maintain after handoff.",
-      "name": "Sarah Chen",
-      "role": "CTO",
-      "company": "Streamline"
-    },
-    {
-      "quote": "Working with Alex was a game-changer for our startup. They didn't just write code — they helped us rethink our architecture and ship 3x faster.",
-      "name": "Marcus Thompson",
-      "role": "Founder",
-      "company": "LaunchPad"
-    },
-    {
-      "quote": "One of the most talented engineers I've collaborated with. Alex has a rare ability to balance technical excellence with practical product thinking.",
-      "name": "Priya Patel",
-      "role": "Engineering Manager",
-      "company": "Nova Labs"
-    }
-  ],
-  "currently": {
-    "working": "Building a real-time collaboration SDK",
-    "reading": "Designing Data-Intensive Applications",
-    "listening": "The Changelog Podcast"
-  },
-  "timeline": [
-    {
-      "year": "2024 — Present",
-      "title": "Senior Full-Stack Engineer",
-      "company": "Streamline",
-      "description": "Leading frontend architecture for a B2B analytics platform. Migrated legacy Angular codebase to React with TypeScript, improving performance by 40%."
-    },
-    {
-      "year": "2022 — 2024",
-      "title": "Full-Stack Developer",
-      "company": "LaunchPad (YC W22)",
-      "description": "Employee #3 at a YC-backed startup. Built the MVP and scaled the product from 0 to 50k users. Owned the entire frontend and API layer."
-    },
-    {
-      "year": "2021 — 2022",
-      "title": "Frontend Developer",
-      "company": "Nova Labs",
-      "description": "Built interactive data visualization dashboards for enterprise clients. Introduced component testing with Storybook, reducing UI bugs by 60%."
-    },
-    {
-      "year": "2019 — 2021",
-      "title": "Junior Developer",
-      "company": "Digital Craft Agency",
-      "description": "Started my career building websites and web apps for small businesses. Learned React, Node.js, and the fundamentals of shipping production code."
-    }
-  ],
-  "education": [
-    {
-      "degree": "B.S. Computer Science",
-      "school": "UC Berkeley",
-      "year": "2019"
-    }
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
   ],
   "footer": {
-    "copyright": "2025 Alex Rivera. All rights reserved.",
-    "builtWith": "Built with Bento by MeggnoTec"
+    "copyright": "2026 Alex Rivera. All rights reserved."
   }
 }

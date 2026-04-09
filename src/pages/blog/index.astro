@@ -3,52 +3,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-
-function readingTime(body: string): string {
-  const words = body.split(/\s+/).length;
-  const minutes = Math.ceil(words / 200);
-  return `${minutes} min read`;
-}
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
-
-<BaseLayout title="Blog" description="Thoughts on web development, open source, and building great software.">
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16">
-    <div class="mb-12 animate-fade-in animate-delay-1">
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text);">
+<BaseLayout title="Blog — Alex Rivera" description="Thoughts on web development, design systems, TypeScript, and building better software.">
+  <main class="max-w-6xl mx-auto px-6 pt-24 pb-16">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-3" style="color: var(--text);">
         <span class="gradient-text">Blog</span>
       </h1>
-      <p class="text-lg max-w-2xl" style="color: var(--muted);">
-        Writing about web development, developer tools, and lessons learned along the way.
-      </p>
+      <p class="text-lg" style="color: var(--muted);">Thoughts on web development, design systems, and building better software.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {posts.map((post, i) => (
-        <a
-          href={`/blog/${post.id}`}
-          class={`gradient-border-hover overflow-hidden p-6 flex flex-col animate-fade-in animate-delay-${Math.min(i + 2, 10)}`}
-          style="background-color: var(--card);"
-        >
-          <div class="flex items-center gap-2 mb-3">
-            <time class="text-xs font-medium" style="color: var(--muted);">
-              {new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-            </time>
-            <span style="color: var(--border);">|</span>
-            <span class="text-xs" style="color: var(--muted);">{readingTime(post.body || '')}</span>
-          </div>
-          <h2 class="text-lg font-semibold mb-2 leading-snug" style="color: var(--text);">{post.data.title}</h2>
-          <p class="text-sm mb-4 flex-1" style="color: var(--muted);">{post.data.description}</p>
-          <div class="flex flex-wrap gap-1.5">
-            {post.data.tags.map((tag) => (
-              <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--bg); color: var(--muted); border: 1px solid var(--border);">
-                {tag}
-              </span>
-            ))}
+        <a href={`/blog/${post.id}`} class:list={["bento-card group", i === 0 ? "lg:col-span-2 lg:row-span-2" : "lg:col-span-2"]}>
+          <div class="flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-3">
+              <time class="text-xs" style="color: var(--muted);">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </time>
+              {post.data.tags.slice(0, 2).map(tag => (
+                <span class="text-xs px-2 py-0.5 rounded-md" style="background-color: var(--accent-violet); color: white; opacity: 0.8;">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h2 class:list={["font-bold mb-2 group-hover:underline", i === 0 ? "text-2xl" : "text-lg"]} style="color: var(--text);">
+              {post.data.title}
+            </h2>
+            <p class="text-sm leading-relaxed flex-1" style="color: var(--muted);">{post.data.description}</p>
+            <span class="text-sm font-medium mt-4 gradient-text">Read more →</span>
           </div>
         </a>
       ))}
     </div>
-  </section>
+  </main>
 </BaseLayout>

@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Nexus UI",
+    "slug": "nexus-ui",
+    "description": "A comprehensive React component library with 60+ accessible components, dark mode support, and full TypeScript coverage.",
+    "longDescription": "Nexus UI started as an internal design system and grew into a full open-source component library. It features 60+ accessible components built with Radix primitives, styled with Tailwind CSS, and fully typed with TypeScript. Used by over 2,000 developers worldwide.",
+    "tags": ["React", "TypeScript", "Tailwind CSS", "Radix UI"],
+    "github": "https://github.com/alexrivera/nexus-ui",
+    "live": "https://nexus-ui.dev",
+    "stars": "4.2K",
+    "featured": true,
+    "color": "violet"
+  },
+  {
+    "title": "Velocity",
+    "slug": "velocity",
+    "description": "Real-time collaboration platform with CRDTs, WebSocket sync, and an intuitive drag-and-drop canvas editor.",
+    "longDescription": "Velocity is a real-time collaboration tool that lets teams design, plan, and execute together. Built with CRDTs for conflict-free editing, WebSocket connections for instant sync, and a canvas-based editor that supports drag-and-drop workflows.",
+    "tags": ["Next.js", "WebSockets", "CRDTs", "PostgreSQL"],
+    "github": "https://github.com/alexrivera/velocity",
+    "live": "https://velocity.app",
+    "stars": "2.8K",
+    "featured": true,
+    "color": "blue"
+  },
+  {
+    "title": "DataForge",
+    "slug": "dataforge",
+    "description": "CLI toolkit for transforming, validating, and migrating data between databases with zero-downtime strategies.",
+    "longDescription": "DataForge is a developer-first CLI tool for database operations. It supports schema migrations, data transformations, and cross-database syncing with zero-downtime deployment strategies. Compatible with PostgreSQL, MySQL, SQLite, and MongoDB.",
+    "tags": ["Node.js", "CLI", "PostgreSQL", "MongoDB"],
+    "github": "https://github.com/alexrivera/dataforge",
+    "live": "",
+    "stars": "1.9K",
+    "featured": true,
+    "color": "green"
+  },
+  {
+    "title": "PixelSnap",
+    "slug": "pixelsnap",
+    "description": "Browser extension for designers that measures distances, picks colors, and exports CSS from any webpage.",
+    "longDescription": "PixelSnap is a browser extension that turns any webpage into an inspectable design. Measure distances between elements, pick colors with precision, copy CSS properties, and export design tokens. Used by 15,000+ designers and developers.",
+    "tags": ["Browser Extension", "JavaScript", "CSS", "Chrome API"],
+    "github": "https://github.com/alexrivera/pixelsnap",
+    "live": "https://pixelsnap.dev",
+    "stars": "3.1K",
+    "featured": false,
+    "color": "orange"
+  },
+  {
+    "title": "Terraform Modules",
+    "slug": "terraform-modules",
+    "description": "Production-ready Terraform modules for AWS infrastructure: VPC, ECS, RDS, and CI/CD pipelines.",
+    "longDescription": "A collection of battle-tested Terraform modules for AWS infrastructure. Includes modules for VPC networking, ECS Fargate services, RDS databases, S3 buckets with CDN, and complete CI/CD pipeline setups. Used in production by 200+ teams.",
+    "tags": ["Terraform", "AWS", "DevOps", "IaC"],
+    "github": "https://github.com/alexrivera/terraform-modules",
+    "live": "",
+    "stars": "890",
+    "featured": false,
+    "color": "purple"
+  },
+  {
+    "title": "Markdown Studio",
+    "slug": "markdown-studio",
+    "description": "Beautiful Markdown editor with live preview, custom themes, and export to PDF, HTML, and DOCX.",
+    "longDescription": "Markdown Studio is a desktop-class Markdown editor built for writers and developers. Features include live split-pane preview, 12 syntax themes, vim keybindings, frontmatter support, and export to PDF, HTML, and DOCX formats.",
+    "tags": ["Electron", "React", "Markdown", "PDF"],
+    "github": "https://github.com/alexrivera/markdown-studio",
+    "live": "https://markdownstudio.app",
+    "stars": "1.5K",
+    "featured": false,
+    "color": "cyan"
+  }
+]

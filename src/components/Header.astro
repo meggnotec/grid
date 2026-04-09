@@ -4,105 +4,84 @@ import ThemeToggle from './ThemeToggle.astro';
 
 const currentPath = Astro.url.pathname;
 ---
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style="background-color: color-mix(in srgb, var(--bg) 80%, transparent); border-bottom: 1px solid var(--border);">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 font-bold text-lg" style="color: var(--text);">
+      <span class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white text-sm font-bold">A</span>
+      <span class="hidden sm:inline">{siteConfig.name.split(' ')[0]}</span>
+    </a>
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass" style="border-bottom: 1px solid var(--border);">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <nav class="flex items-center justify-between h-16" aria-label="Main navigation">
-      <a href="/" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity" style="color: var(--text);">
-        {siteConfig.name}<span class="gradient-text">.</span>
-      </a>
-
-      <div class="hidden md:flex items-center gap-1">
-        {siteConfig.nav.map((item) => {
-          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
-          return (
-            <a
-              href={item.href}
-              class:list={[
-                'px-3 py-2 text-sm font-medium rounded-lg transition-colors',
-                isActive ? 'gradient-text' : 'hover:opacity-80',
-              ]}
-              style={!isActive ? 'color: var(--muted);' : undefined}
-            >
-              {item.label}
-            </a>
-          );
-        })}
-        <ThemeToggle />
-      </div>
-
-      <div class="flex items-center gap-2 md:hidden">
-        <ThemeToggle />
-        <button
-          id="mobile-menu-btn"
-          class="p-2 rounded-lg transition-colors"
-          style="color: var(--muted);"
-          aria-label="Toggle menu"
-          aria-expanded="false"
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-1">
+      {siteConfig.nav.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+              ? "gradient-text"
+              : ""
+          ]}
+          style={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? "" : `color: var(--muted);`}
         >
-          <svg id="menu-open-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-          <svg id="menu-close-icon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+          {link.label}
+        </a>
+      ))}
+      <ThemeToggle />
+    </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--border); background-color: var(--bg);">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
-      {siteConfig.nav.map((item) => {
-        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
-        return (
-          <a
-            href={item.href}
-            class:list={[
-              'px-3 py-2 text-sm font-medium rounded-lg transition-colors',
-              isActive ? 'gradient-text' : '',
-            ]}
-            style={!isActive ? 'color: var(--muted);' : undefined}
-          >
-            {item.label}
-          </a>
-        );
-      })}
+    <!-- Mobile Menu Button -->
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle />
+      <button
+        id="mobile-menu-btn"
+        class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+        style="color: var(--muted);"
+        aria-label="Toggle menu"
+      >
+        <svg id="menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <svg id="menu-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+    <div class="flex flex-col gap-1">
+      {siteConfig.nav.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
+            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+              ? "gradient-text"
+              : ""
+          ]}
+          style={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? "" : `color: var(--muted);`}
+        >
+          {link.label}
+        </a>
+      ))}
     </div>
   </div>
 </header>
 
 <script is:inline>
-  (function() {
-    const header = document.getElementById('site-header');
-    const btn = document.getElementById('mobile-menu-btn');
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
-    const openIcon = document.getElementById('menu-open-icon');
-    const closeIcon = document.getElementById('menu-close-icon');
-
-    let isScrolled = false;
-
-    window.addEventListener('scroll', function() {
-      const scrolled = window.scrollY > 20;
-      if (scrolled !== isScrolled) {
-        isScrolled = scrolled;
-        if (scrolled) {
-          header.classList.add('glass-scrolled');
-        } else {
-          header.classList.remove('glass-scrolled');
-        }
-      }
-    }, { passive: true });
-
-    btn.addEventListener('click', function() {
-      const isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!isOpen));
-    });
-  })();
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+  });
 </script>
