@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteConfig from '../data/site-config.json';
+---
+<BaseLayout title={`Terms of Service — ${siteConfig.name}`} description="Terms of service for Alex Rivera's portfolio website.">
+  <main class="max-w-3xl mx-auto px-6 pt-24 pb-16">
+    <div class="bento-card !p-8">
+      <h1 class="text-3xl font-bold mb-2" style="color: var(--text);">
+        <span class="gradient-text">Terms of Service</span>
+      </h1>
+      <p class="text-sm mb-8" style="color: var(--muted);"><em>Last updated: March 15, 2026</em></p>
+
+      <div class="prose-content">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing and using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you should not use this website.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>This website serves as a personal portfolio and blog for Alex Rivera, showcasing professional work, projects, and writings. The content is provided for informational and demonstration purposes.</p>
+
+        <h2>3. Intellectual Property</h2>
+        <p>All content on this website, including but not limited to text, graphics, logos, images, code samples, and design elements, is the property of Alex Rivera unless otherwise stated. You may not reproduce, distribute, or create derivative works from this content without explicit written permission.</p>
+
+        <h2>4. User Conduct</h2>
+        <p>When using this website or submitting information through the contact form, you agree not to submit false or misleading information, attempt to gain unauthorized access to any part of the website, use the website for any unlawful purpose, or interfere with or disrupt the website's functionality.</p>
+
+        <h2>5. Third-Party Links</h2>
+        <p>This website may contain links to third-party websites or services. We are not responsible for the content, privacy policies, or practices of any third-party sites. Visiting external links is at your own risk.</p>
+
+        <h2>6. Disclaimer of Warranties</h2>
+        <p>This website is provided "as is" and "as available" without any warranties of any kind, either express or implied. We do not guarantee that the website will be uninterrupted, error-free, or free of harmful components.</p>
+
+        <h2>7. Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, Alex Rivera shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of this website.</p>
+
+        <h2>8. Indemnification</h2>
+        <p>You agree to indemnify and hold harmless Alex Rivera from any claims, damages, losses, or expenses arising from your use of this website or violation of these Terms of Service.</p>
+
+        <h2>9. Modifications</h2>
+        <p>We reserve the right to modify these Terms of Service at any time. Changes will be posted on this page with an updated revision date. Your continued use of the website after modifications are posted constitutes acceptance of the revised terms.</p>
+
+        <h2>10. Governing Law</h2>
+        <p>These Terms of Service are governed by and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law principles.</p>
+
+        <h2>11. Contact</h2>
+        <p>If you have questions about these Terms of Service, please reach out through the <a href="/contact" style="color: var(--accent-violet);">contact page</a>.</p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .prose-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+  .prose-content p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: var(--muted);
+  }
+  .prose-content a {
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+  .prose-content a:hover {
+    color: var(--accent-pink);
+  }
+</style>
